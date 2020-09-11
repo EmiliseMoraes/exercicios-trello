@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <div class="table-responsive-sm">
+        <table class="table">
+
+        </table>
+    </div>
+
+
+    <script>
+        //cadastrar array com carros com marca, ano, modelo
+        //cadastrar, listar, limpar
+        arrCarros = []
+        function cadastrarCarros() {
+            let marca = document.getElementById("marcaInput").value
+            let ano = document.getElementById("anoInput").value
+            let modelo = document.getElementById("modeloInput").value
+
+
+            document.getElementById("marcaInput").value = ""
+            document.getElementById("anoInput").value = ""
+            document.getElementById("modeloInput").value = ""
+
+            arrCarros.push({ model: modelo, a: ano, m: marca, concluido: false });
+
+
+
+        }
+        function listarCarros() {
+            let saidaHTML = "";
+            for (let i = 0; i < arrCarros.length; i++) {
+                saidaHTML = saidaHTML + `<div>Modelo: ${arrCarros[i].model}</br>
+                Ano: ${arrCarros[i].a}</br>
+                Marca:${arrCarros[i].m}<div>`
+            }
+            document.getElementById("saida").innerHTML = saidaHTML;
+        }
+        function limparCampos() {
+            arrCarros = []
+            document.getElementById("saida").innerHTML = "";
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="container-sm">
+        <input type="text" placeholder="Marca" id="marcaInput">
+
+        <input type="text" placeholder="Modelo" id="modeloInput">
+
+        <input type="text" placeholder="Ano" id="anoInput">
+
+        <div><button class="btn btn-primary" onclick="cadastrarCarros()">Cadastrar</button>
+            <button class="btn btn-info" onclick="listarCarros()">Listar</button>
+            <button class="btn btn-danger" onclick="limparCampos()">Limpar</button>
+        </div>
+
+        <div id="saida"></div>
+
+    </div>
+
+</body>
+
+</html>
